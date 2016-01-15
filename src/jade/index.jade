@@ -1,0 +1,25 @@
+extends _layout
+
+mixin renderSec(data)
+	- k = 1;
+	each obj in data
+		section(class='section section-#{k}')
+			h1(class='section-#{k}-title')
+				|#{obj.title}
+			.container(class='section-#{k}-body')
+				if obj.pickup
+					p(class='pickup')!= obj.pickup
+				img(src='img/section-#{k}-img.jpg', alt='section-#{k}-img', width='100%')
+				p #{obj.description}
+		- k++;
+
+block head
+	meta(property='blocked-meta', content='')
+	link(rel='blocked-link', href='')
+
+block content
+	div.contents
+		+renderSec(secData)
+
+block script
+	//- blocked script
